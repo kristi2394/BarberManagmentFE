@@ -1,0 +1,25 @@
+.isReadOnly {
+  border: none;
+  text-align: center;
+  font-size: 28px;
+  padding: 0;
+  text-transform: uppercase;
+  outline: none;
+  margin: 25px 0;
+  color: #1a7012;
+  font-family: Belleza, serif;
+  font-weight: bold;
+  background: transparent;
+  text-shadow: #000 1px 0 10px;
+}
+
+.inputStyle {
+  padding: 10px 5px;
+  border: 2px solid #1a7012;
+  font-size: 16px;
+  font-size: 26px;
+}
+
+*:focus {
+  outline: none;
+}

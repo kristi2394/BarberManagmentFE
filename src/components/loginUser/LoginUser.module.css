@@ -1,0 +1,39 @@
+.formHolder {
+  border: 5px solid #1a7012;
+  background-color: #fff;
+  padding: 30px;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 2px 27px -7px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 1px 2px 27px -7px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 1px 2px 27px -7px rgba(0, 0, 0, 1);
+}
+.noUserStyle {
+  text-align: center;
+  margin: 0;
+  color: #1a7012;
+  text-shadow: #000 1px 0 10px;
+}
+
+.avatartHolder {
+  width: 50%;
+  margin: 20px auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.informationHolder input {
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.loginButt {
+  padding: 15px;
+}
+
+.passButtHolder {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}

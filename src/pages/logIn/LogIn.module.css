@@ -1,0 +1,29 @@
+.loginContainer {
+  display: flex;
+  flex-direction: row;
+}
+.userHolder {
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  margin: 0 25px;
+  padding-right: 70px;
+  border-right: 3px solid #27861e;
+}
+.userHolder ul {
+  display: inline;
+  list-style-type: none;
+  padding: 0 15px;
+}
+
+.userHolder ul li {
+  margin: 30px 0;
+}
+
+.loginHolder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

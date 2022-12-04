@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Belleza";
+  src: local("Belleza"), url(./fonts/Belleza-Regular.ttf) format("truetype");
+}
+
+body {
+  background: url("./assets/img/oldWorldMap.jpg");
+  background-size: cover;
+}
