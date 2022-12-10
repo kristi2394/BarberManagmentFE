@@ -16,12 +16,7 @@ const dummyUsers = [
 const Login = () => {
   const [userName, setUserName] = useState<string>("");
   const focusRef = useRef<HTMLInputElement>(null);
-  const { data } = useQuery([
-    "UsersList",
-    () => {
-      AuthApi().GetUsersList();
-    },
-  ]);
+  const { data } = useQuery("UsersList", ()=>AuthApi().GetUsersList());
 
   console.log(data);
 

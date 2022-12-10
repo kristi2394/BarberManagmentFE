@@ -3,9 +3,7 @@ import { ApiConfig } from "./ApiConfig";
 
 export const AuthApi = () => {
   const GetUsersList = () => {
-    return Axios.get(`${ApiConfig.BASE_URL}/usersList`).then(
-      (response) => response.data
-    );
+    return Axios.get(`${ApiConfig.BASE_URL}/usersList`);
   };
 
   return {
