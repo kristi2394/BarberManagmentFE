@@ -4,18 +4,12 @@ import { useEffect } from "react";
 import "./App.css";
 import Login from "./pages/logIn/LogIn";
 import { AuthApi } from "./libs/ApiServices/AuthApi";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query'
+import { QueryClient, QueryClientProvider } from "react-query";
 
-const queryClient = new QueryClient();
+const client = new QueryClient();
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={client}>
       <Router>
         <Routes>
           <Route element={<Login />} path="/" />

@@ -1,13 +1,14 @@
-import axios from "axios";
+import Axios from "axios";
 import { ApiConfig } from "./ApiConfig";
 
 export const AuthApi = () => {
-  const GetUsersList = async () => {
-    const api = await axios.get(`${ApiConfig.BASE_URL}/usersList`);
-    return api.data
+  const GetUsersList = () => {
+    return Axios.get(`${ApiConfig.BASE_URL}/usersList`).then(
+      (response) => response.data
+    );
   };
 
   return {
-    GetUsersList
-  }
+    GetUsersList,
+  };
 };

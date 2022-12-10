@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
-import { useQuery, useQueryClient } from "react-query";
-import { AuthApi } from "../../libs/ApiServices/AuthApi";
+import { useQuery } from "react-query";
 
 import LoginUser from "../../components/loginUser/LoginUser";
 import UsersList from "../../components/usersList/UsersList";
+import { AuthApi } from "../../libs/ApiServices/AuthApi";
 
 import styles from "./LogIn.module.css";
 
@@ -16,15 +16,14 @@ const dummyUsers = [
 const Login = () => {
   const [userName, setUserName] = useState<string>("");
   const focusRef = useRef<HTMLInputElement>(null);
+  const { data } = useQuery([
+    "UsersList",
+    () => {
+      AuthApi().GetUsersList();
+    },
+  ]);
 
-
-  console.log(AuthApi().GetUsersList())
-
-     const queryClient = useQueryClient()
- 
-
-     const {data} = useQuery('api', async()=>await AuthApi().GetUsersList())
-   
+  console.log(data);
 
   const focusHandler = () => {
     if (focusRef.current !== null) {
