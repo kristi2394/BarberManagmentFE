@@ -16,9 +16,10 @@ const dummyUsers = [
 const Login = () => {
   const [userName, setUserName] = useState<string>("");
   const focusRef = useRef<HTMLInputElement>(null);
-  const { data } = useQuery("UsersList", ()=>AuthApi().GetUsersList());
-
-  console.log(data);
+  const { data: listUsers } = useQuery("UsersList", ()=>AuthApi().GetUsersList());
+  if(!listUsers){
+    return
+  }
 
   const focusHandler = () => {
     if (focusRef.current !== null) {
@@ -32,11 +33,11 @@ const Login = () => {
     <div className={styles.loginContainer}>
       <div className={styles.userHolder}>
         <ul>
-          {dummyUsers.map((user) => (
+          {listUsers.map((user:any) => (
             <UsersList
               buttonVal={buttonVal}
               key={user.id}
-              user={user.name}
+              user={user.username}
               focusHandler={focusHandler}
             />
           ))}
