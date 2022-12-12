@@ -7,7 +7,7 @@ export enum ButtonType {
 }
 
 export const Button = ({children, type, customClass, value, onClick}: {children: React.ReactNode, type?: ButtonType, customClass?: string, value?: string, onClick?: React.MouseEventHandler<HTMLButtonElement>}) =>{
-    const customisedClass = `${styles.buttonContent} ${customClass} `
+    const customisedClass = `${styles.buttonContent} ${customClass ? customClass : ''}`
     return (
         <button type={type} className={customisedClass} value={value} onClick={onClick}>{children}</button>
     )

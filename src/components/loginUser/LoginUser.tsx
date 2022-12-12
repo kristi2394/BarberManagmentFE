@@ -11,12 +11,16 @@ import { useMutation, useQuery } from "react-query";
 const LoginUser = ({
   userName,
   focusRef,
+  rols
 }: {
   userName: string;
+  rols: string
   focusRef: React.Ref<HTMLInputElement>;
 }) => {
   const [passWord, setPassWord] = useState("");
   const notSelected = userName.length === 0;
+
+  // do i shikoj me vone 
   const { mutate: mutateLogin, data: loginData } = useMutation(
     "userLogIn",
     AuthApi().PostUsersLogIn
@@ -31,39 +35,45 @@ const LoginUser = ({
 
     mutateLogin(postBody);
   };
-  console.log(loginData);
 
   const onchangeHandler = (e: any) => {
     setTimeout(() => {
       setPassWord(e.target.value);
     }, 300);
   };
-  console.log(passWord);
+
+  // 
 
   return (
-    <div className={styles.formHolder}>
-      <form>
-        <div className={styles.avatartHolder}>
-          <BarberAvatar />
-        </div>
-        <div className={styles.informationHolder}>
-          <Input type={InputType.text} value={userName} readOnly={true} />
-          {notSelected ? (
-            <h1 className={styles.noUserStyle}>No User Selected</h1>
-          ) : (
-            <div className={styles.passButtHolder}>
-              <Input
-                type={InputType.password}
-                onChange={onchangeHandler}
-                reF={focusRef}
-              />
-              <Button onClick={postHandler} customClass={styles.loginButt}>
-                LogIn
-              </Button>
-            </div>
-          )}
-        </div>
-      </form>
+    <div className={styles.formAndRoles}>
+      {rols && <div className={styles.ribbon}>
+		    {rols}
+	    </div>}
+      <div className={styles.formHolder}>
+        <form>
+          <div className={styles.avatartHolder}>
+            <BarberAvatar />
+          </div>
+          <div className={styles.informationHolder}>
+            <Input type={InputType.text} value={userName} readOnly={true} />
+            {notSelected ? (
+              <h1 className={styles.noUserStyle}>No User Selected</h1>
+            ) : (
+              <div className={styles.passButtHolder}>
+                <Input
+                  type={InputType.password}
+                  onChange={onchangeHandler}
+                  reF={focusRef}
+                  placeHolder='Password'
+                />
+                <Button onClick={postHandler} customClass={styles.loginButt}>
+                  LogIn
+                </Button>
+              </div>
+            )}
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

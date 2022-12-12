@@ -4,8 +4,10 @@
   color: #fff;
   padding: 20px;
   border: none;
+  border-radius: 10px;
   transition: 0.5s ease-in-out;
   font-size: 18px;
+  text-transform: capitalize;
 }
 .buttonContent:active {
   background: #27861e;

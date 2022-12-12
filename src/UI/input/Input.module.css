@@ -11,6 +11,8 @@
   font-weight: bold;
   background: transparent;
   text-shadow: #000 1px 0 10px;
+  border: none;
+  color: #fff;
 }
 
 .inputStyle {

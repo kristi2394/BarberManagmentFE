@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import styles from "./Input.module.css";
 
 export enum InputType {
@@ -20,6 +19,8 @@ export const Input = ({
   value,
   readOnly,
   reF,
+  placeHolder,
+  customClass
 }: {
   type: InputType;
   onChange?: (
@@ -30,15 +31,19 @@ export const Input = ({
   value?: string;
   readOnly?: boolean;
   reF?: React.Ref<HTMLInputElement>;
+  placeHolder?: string
+  customClass?: string
 }) => {
+  const classStyleInput = ` ${readOnly ? styles.isReadOnly : styles.inputStyle} ${customClass ? customClass : ''}`
   return (
     <input
       type={type}
       onChange={onChange}
       value={value}
       readOnly={readOnly}
-      className={readOnly ? styles.isReadOnly : styles.inputStyle}
+      className={classStyleInput}
       ref={reF}
+      placeholder={placeHolder}
     />
   );
 };

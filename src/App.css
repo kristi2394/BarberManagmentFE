@@ -6,4 +6,5 @@
 body {
   background: url("./assets/img/oldWorldMap.jpg");
   background-size: cover;
+  margin: 0;
 }
