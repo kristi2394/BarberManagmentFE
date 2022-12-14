@@ -1,5 +1,5 @@
 export interface serviceType {
-  id: string;
-  name: string;
-  price: number;
+  id?: string;
+  name?: string;
+  price?: number;
 }

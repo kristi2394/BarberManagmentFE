@@ -25,17 +25,17 @@ const SidebarComponent = () => {
         <div className={styles.profileContainer}>
           <img className={styles.profileIcon} src="" alt="" />
           <div className={styles.profileUserContent}>
-            <span className={styles.profileUsername}>fadsfdsafs</span>
-            <span className={styles.profileUsername}>fadsfas asdfdasafds</span>
+            <span className={styles.profileUsername}>name</span>
+            <span className={styles.profileUsername}>role</span>
           </div>
         </div>
       </div>
       <div>
-        <SideBarItem icon="" name="asdfasdf" onclick={() => {}} />
-        <SideBarItem icon="" name="asdfasdf" onclick={() => {}} />
-        <SideBarItem icon="" name="asdfasdf" onclick={() => {}} />
-        <SideBarItem icon="" name="asdfasdf" onclick={() => {}} />
-        <SideBarItem icon="" name="asdfasdf" onclick={() => {}} />
+        <SideBarItem icon="" name="menuRout1" onclick={() => {}} />
+        <SideBarItem icon="" name="menuRout2" onclick={() => {}} />
+        <SideBarItem icon="" name="menuRout3" onclick={() => {}} />
+        <SideBarItem icon="" name="menuRout4" onclick={() => {}} />
+        <SideBarItem icon="" name="menuRout5" onclick={() => {}} />
       </div>
       <button className={styles.logOutButton}>Log Out</button>
     </div>
