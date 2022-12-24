@@ -9,6 +9,7 @@ import { AuthApi } from "../../libs/ApiServices/AuthApi";
 import { useMutation, useQuery } from "react-query";
 import { roles } from "../../types/rols";
 import useGlobalContext from "../../context/useGlobalContext";
+import LogInServices, { logInStore } from "../../libs/LogInServices/LogInServices";
 
 const LoginUser = ({
   userName,
@@ -21,14 +22,19 @@ const LoginUser = ({
 }) => {
   const [passWord, setPassWord] = useState("");
   const notSelected = userName.length === 0;
-  const { useLogInContext } = useGlobalContext();
-  const { logInState, LogInActions } = useLogInContext;
+  const { LogIn, getLoginData } = LogInServices();
   // do i shikoj me vone
   const { mutate: mutateLogin, data: loginData } = useMutation(
     "userLogIn",
-    AuthApi().PostUsersLogIn
+    AuthApi().PostUsersLogIn,
+    {
+      onSuccess: (response) => {
+        LogIn(response.token, response.id, response.rols);
+      },
+    }
   );
-
+  console.log(getLoginData);
+  console.log(logInStore().getLoginData());
   const postHandler = (e: any) => {
     e.preventDefault();
     const postBody = {
@@ -37,13 +43,6 @@ const LoginUser = ({
     };
     mutateLogin(postBody);
   };
-
-
-
-  
-
-  console.log(loginData);
-  console.log(roles.admins);
 
   const onchangeHandler = (e: any) => {
     setTimeout(() => {

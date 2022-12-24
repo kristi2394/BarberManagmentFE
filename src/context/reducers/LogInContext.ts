@@ -42,10 +42,10 @@ const reducer = (
   }
 };
 export interface logInActions {
-  addToken: (action: actions.addToken) => void;
-  addUserId: (action: actions.addUserId) => void;
-  addRoles: (action: actions.addRoles) => void;
-  clear: (action: actions.clear) => void;
+  addToken: (action: string) => void;
+  addUserId: (action: string) => void;
+  addRoles: (action: roles) => void;
+  clear: () => void;
 }
 const LogInContext = () => {
   const [logInState, dispatch] = useReducer(reducer, nullState);
@@ -54,9 +54,9 @@ const LogInContext = () => {
       dispatch({ type: actions.addToken, payload: token }),
     addUserId: (userId: string) =>
       dispatch({ type: actions.addUserId, payload: userId }),
-    addRoles: (roles: string) =>
+    addRoles: (roles: roles) =>
       dispatch({ type: actions.addRoles, payload: roles }),
-    clear: () => dispatch({ type: actions.clear, payload: undefined }),
+    clear: () => dispatch({ type: actions.clear, payload: roles.empty }),
   };
   return { LogInActions, logInState };
 };
