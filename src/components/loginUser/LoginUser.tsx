@@ -7,20 +7,23 @@ import styles from "./LoginUser.module.css";
 import { useState } from "react";
 import { AuthApi } from "../../libs/ApiServices/AuthApi";
 import { useMutation, useQuery } from "react-query";
+import { roles } from "../../types/rols";
+import useGlobalContext from "../../context/useGlobalContext";
 
 const LoginUser = ({
   userName,
   focusRef,
-  rols
+  rols,
 }: {
   userName: string;
-  rols: string
+  rols: string;
   focusRef: React.Ref<HTMLInputElement>;
 }) => {
   const [passWord, setPassWord] = useState("");
   const notSelected = userName.length === 0;
-
-  // do i shikoj me vone 
+  const { useLogInContext } = useGlobalContext();
+  const { logInState, LogInActions } = useLogInContext;
+  // do i shikoj me vone
   const { mutate: mutateLogin, data: loginData } = useMutation(
     "userLogIn",
     AuthApi().PostUsersLogIn
@@ -32,9 +35,15 @@ const LoginUser = ({
       username: userName,
       password: passWord,
     };
-
     mutateLogin(postBody);
   };
+
+
+
+  
+
+  console.log(loginData);
+  console.log(roles.admins);
 
   const onchangeHandler = (e: any) => {
     setTimeout(() => {
@@ -42,13 +51,11 @@ const LoginUser = ({
     }, 300);
   };
 
-  // 
+  //
 
   return (
     <div className={styles.formAndRoles}>
-      {rols && <div className={styles.ribbon}>
-		    {rols}
-	    </div>}
+      {rols && <div className={styles.ribbon}>{rols}</div>}
       <div className={styles.formHolder}>
         <form>
           <div className={styles.avatartHolder}>
@@ -64,7 +71,7 @@ const LoginUser = ({
                   type={InputType.password}
                   onChange={onchangeHandler}
                   reF={focusRef}
-                  placeHolder='Password'
+                  placeHolder="Password"
                 />
                 <Button onClick={postHandler} customClass={styles.loginButt}>
                   LogIn
