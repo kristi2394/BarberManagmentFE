@@ -1,9 +1,9 @@
 .sidebarContainer {
   max-width: 300px;
   height: 100vh;
-  background-color: green;
-  opacity: 0.9;
+  background-color: #27861e36;
   padding: 10px;
+  backdrop-filter: blur(10px);
 }
 .sidbarButton {
   background-color: rgb(2, 104, 2);

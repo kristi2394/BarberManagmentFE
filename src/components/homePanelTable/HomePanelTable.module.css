@@ -2,7 +2,7 @@
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
-  font-family: sans-serif;
+  color: white;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   height: fit-content;
@@ -11,7 +11,7 @@
 }
 
 .TableStyle thead tr {
-  background-color: #007bff;
+  background-color: #0000007e;
   color: #ffffff;
   text-align: left;
   font-size: 12px;
@@ -23,18 +23,21 @@
 }
 
 .TableStyle tbody tr {
-  border-bottom: 1px solid #dddddd;
+  /* border-bottom: 1px solid #00000034; */
 }
 .TableStyle tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2.3px);
 }
 
 .TableStyle tbody tr:last-of-type {
-  border-bottom: 2px solid #007bff;
+  /* border-bottom: 2px solid #00000013; */
 }
 
 .TableStyle tbody tr:nth-of-type(odd) {
-  background-color: #f3f3f3f1;
+  background-color: rgba(0, 0, 0, 0.53);
+  backdrop-filter: blur(2.3px);
+
 }
 
 .buttonsMutation {

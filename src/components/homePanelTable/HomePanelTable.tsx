@@ -139,9 +139,9 @@ const HomePanelTable = () => {
     <table className={styles.TableStyle}>
       <thead>
         <tr>
-          <th>username</th>
-          <th>serviceEntities</th>
-          <th>totalPrice</th>
+          <th>user name</th>
+          <th>service type</th>
+          <th>total Price</th>
           <th>operations</th>
         </tr>
       </thead>
