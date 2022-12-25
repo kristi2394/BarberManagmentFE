@@ -1,4 +1,5 @@
 import React from "react";
+import LogInServices from "../../libs/LogInServices/LogInServices";
 import styles from "./SidebarComponent.module.css";
 
 const SideBarItem = ({
@@ -19,6 +20,12 @@ const SideBarItem = ({
 };
 
 const SidebarComponent = () => {
+  const logInServices = LogInServices();
+
+  const logOut = () => {
+
+    logInServices.LogOut();
+  };
   return (
     <div className={styles.sidebarContainer}>
       <div>
@@ -37,7 +44,9 @@ const SidebarComponent = () => {
         <SideBarItem icon="" name="menuRout4" onclick={() => {}} />
         <SideBarItem icon="" name="menuRout5" onclick={() => {}} />
       </div>
-      <button className={styles.logOutButton}>Log Out</button>
+      <button className={styles.logOutButton} onClick={logOut}>
+        Log Out
+      </button>
     </div>
   );
 };
