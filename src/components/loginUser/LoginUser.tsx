@@ -29,6 +29,9 @@ const LoginUser = ({
     AuthApi().PostUsersLogIn,
     {
       onSuccess: (response) => {
+        console.log("fasdafdsf sdfasdfasdfsfdsfdsfsdfsfdasfdsf");
+        console.log(response);
+        
         LogIn(response.token, response.id, response.rols);
       },
     }

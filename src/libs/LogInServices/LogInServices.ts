@@ -45,6 +45,9 @@ const LogInServices = () => {
   const getLoginData = logInStore().getLoginData();
 
   const LogIn = (token: string, userId: string, roles: roles) => {
+    if (!token || !userId || !roles) {
+      return null;
+    }
     LogInActions.addToken(token);
     LogInActions.addUserId(userId);
     LogInActions.addRoles(roles);
