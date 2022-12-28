@@ -162,7 +162,7 @@ const HomePanelTable = () => {
                     <div>
                       <span
                         style={{
-                          backgroundColor: "gray",
+                          backgroundColor: "#00800029",
                           padding: "2px",
                           borderRadius: "5px",
                           display: "flex",

@@ -1,7 +1,7 @@
 .sidebarContainer {
   max-width: 300px;
   height: 100vh;
-  background-color: #27861e36;
+  background-color: #0000001a;
   padding: 10px;
   backdrop-filter: blur(10px);
 }
@@ -10,6 +10,8 @@
   margin-bottom: 20px;
   padding: 5px;
   border-radius: 5px;
+  width: fit-content;
+  display: flex;
 }
 .sidbarButton .sidebarIcon {
   background-color: black;
@@ -28,10 +30,13 @@
   height: 120px;
   margin-bottom: 10px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .profileContainer .profileUserContent {
-  margin-left: 20px;
+  margin-left: 3px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +55,7 @@
   background-color: red;
   color: white;
   width: 100%;
-  font-size: 30px;
+  font-size: 23px;
   border: none;
   border-radius: 15px;
   padding: 10px;
