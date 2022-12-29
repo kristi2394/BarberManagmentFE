@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useQuery } from "react-query";
+import { PurchesListApi } from "../../libs/ApiServices/PurchesListApi";
 import { PurcheseTypes } from "../../types/purcheseTypes";
 import styles from "./HomePanelTable.module.css";
 
@@ -18,13 +20,13 @@ const nullPurchese: PurcheseTypes = {
   id: "",
   serviceEntities: [{ id: "", name: "", price: 0 }],
   totalPrice: 0,
-  Users: { id: "", username: "", password: "", PurchesedServiceEntity: [] },
+  users: { id: "", username: "", password: "", purchesedServiceEntity: [] },
 };
 const tableDataTester: PurcheseTypes[] = [
   {
     id: "1",
     totalPrice: 0,
-    Users: { username: "adfsfds" },
+    users: { username: "adfsfds" },
     serviceEntities: [
       {
         name: "service",
@@ -35,7 +37,7 @@ const tableDataTester: PurcheseTypes[] = [
   {
     id: "2",
     totalPrice: 0,
-    Users: { username: "adfsfds" },
+    users: { username: "adfsfds" },
     serviceEntities: [
       {
         name: "service1",
@@ -82,7 +84,7 @@ const tableDataTester: PurcheseTypes[] = [
   {
     id: "3",
     totalPrice: 0,
-    Users: { username: "adfsfds" },
+    users: { username: "adfsfds" },
     serviceEntities: [
       {
         name: "service",
@@ -93,7 +95,7 @@ const tableDataTester: PurcheseTypes[] = [
   {
     id: "4",
     totalPrice: 0,
-    Users: { username: "adfsfds" },
+    users: { username: "adfsfds" },
     serviceEntities: [
       {
         name: "service",
@@ -104,7 +106,7 @@ const tableDataTester: PurcheseTypes[] = [
   {
     id: "5",
     totalPrice: 0,
-    Users: { username: "adfsfds" },
+    users: { username: "adfsfds" },
     serviceEntities: [
       {
         name: "service",
@@ -115,7 +117,7 @@ const tableDataTester: PurcheseTypes[] = [
   {
     id: "6",
     totalPrice: 0,
-    Users: { username: "adfsfds" },
+    users: { username: "adfsfds" },
     serviceEntities: [
       {
         name: "service",
@@ -130,11 +132,15 @@ const HomePanelTable = () => {
   const [changeFields, setChangeFields] = useState<PurcheseTypes>(nullPurchese);
   const [tableData, setTableData] =
     useState<Array<PurcheseTypes>>(tableDataTester);
+    const {data : purcheseList} = useQuery("purcheseList",PurchesListApi().getPurchesListOrderedByDate)
+
 
   const deletePurchese = (id?: string) => {
     setTableData((n) => n.filter((n) => n.id != id));
   };
 
+  console.log("sdfasdasdfasdfasf", purcheseList);
+  
   return (
     <table className={styles.TableStyle}>
       <thead>
@@ -146,10 +152,10 @@ const HomePanelTable = () => {
         </tr>
       </thead>
       <tbody>
-        {tableData &&
-          tableData.map((n) => (
+        {purcheseList &&
+          (purcheseList as PurcheseTypes[]).map((n) => (
             <tr>
-              <td>{n.Users?.username}</td>
+              <td>{n.users?.username}</td>
               <td>
                 <div
                   style={{

@@ -5,5 +5,5 @@ export interface userTypes {
   username?: string;
   password?: string;
   rols?: string;
-  PurchesedServiceEntity?: PurcheseTypes[];
+  purchesedServiceEntity?: PurcheseTypes[];
 }

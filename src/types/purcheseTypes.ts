@@ -4,6 +4,6 @@ import { userTypes } from "./userTypes";
 export interface PurcheseTypes {
   id?: string;
   serviceEntities?: serviceType[];
-  Users?: userTypes;
+  users?: userTypes;
   totalPrice?: number;
 }
