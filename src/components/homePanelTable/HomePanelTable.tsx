@@ -20,6 +20,7 @@ const HomePanelTable = ({
           <th>user name</th>
           <th>service type</th>
           <th>total Price</th>
+          <th>dateStamp</th>
           <th>operations</th>
         </tr>
       </thead>
@@ -61,14 +62,15 @@ const HomePanelTable = ({
                 </div>
               </td>
               <td>{n.totalPrice}</td>
+              <td>{n.dateTime?.toString()}</td>
               <td>
                 <span className={styles.buttonMutationContainet}>
                   <span className={styles.buttonsMutation}></span>
                   <span className={styles.buttonsMutation}></span>
                   <span
                     onClick={() => deletePurches(n.id)}
-                    className={styles.buttonsMutation}
-                  ></span>
+                    className={`${styles.buttonsMutation} ${styles.delete}`}
+                  >x</span>
                 </span>
               </td>
             </tr>

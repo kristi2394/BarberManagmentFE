@@ -37,7 +37,6 @@
 .TableStyle tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.53);
   backdrop-filter: blur(2.3px);
-
 }
 
 .buttonsMutation {
@@ -47,9 +46,12 @@
   display: flex;
 }
 
-
-
-.buttonsMutation .delete {
+.delete {
+  background-color: red !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .buttonMutationContainet {

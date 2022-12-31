@@ -6,4 +6,5 @@ export interface PurcheseTypes {
   serviceEntities?: serviceType[];
   users?: userTypes;
   totalPrice?: number;
+  dateTime?: Date | string;
 }

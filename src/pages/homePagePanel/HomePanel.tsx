@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import HomePanelTable from "../../components/homePanelTable/HomePanelTable";
 import SidebarComponent from "../../components/sidebar/SidebarComponent";
 const nullPurchese: PurcheseTypes = {
@@ -131,11 +131,23 @@ const HomePanel = () => {
     to: undefined,
   });
   const { data: purcheseList, refetch } = useQuery(
-    ['product', params],
+    ["product", params],
     async () => await PurchesListApi().getPurchesListOrderedByDate(params)
   );
+  const { mutate: deleteServiceApiMutation, data: loginData } = useMutation(
+    "deletePurches",
+    PurchesListApi().DeletePurcheseAdmin,
+    {
+      onSuccess: (response) => {
+        refetch();
+      },
+    }
+  );
 
-  const deletePurchese = (id?: string) => {};
+  const deletePurchese = (id?: string) => {
+    if (!id) return;
+    deleteServiceApiMutation(id);
+  };
 
   const onSearchDate = () => {
     const queryChangePro = new QueryBuilder("")
@@ -159,10 +171,7 @@ const HomePanel = () => {
     }
   };
 
-  useEffect(() => {
-    
-  }, [])
-  
+  useEffect(() => {}, []);
 
   const setInputsFields = (
     e: any,
