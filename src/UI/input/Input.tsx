@@ -20,7 +20,10 @@ export const Input = ({
   readOnly,
   reF,
   placeHolder,
-  customClass
+  customClass,
+  name,
+  id,
+  min,
 }: {
   type: InputType;
   onChange?: (
@@ -28,13 +31,18 @@ export const Input = ({
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => void;
-  value?: string;
+  value?: string | number;
   readOnly?: boolean;
   reF?: React.Ref<HTMLInputElement>;
-  placeHolder?: string
-  customClass?: string
+  placeHolder?: string;
+  customClass?: string;
+  name?: string;
+  id?: string;
+  min?: number;
 }) => {
-  const classStyleInput = ` ${readOnly ? styles.isReadOnly : styles.inputStyle} ${customClass ? customClass : ''}`
+  const classStyleInput = ` ${
+    readOnly ? styles.isReadOnly : styles.inputStyle
+  } ${customClass ? customClass : ""}`;
   return (
     <input
       type={type}
@@ -44,6 +52,9 @@ export const Input = ({
       className={classStyleInput}
       ref={reF}
       placeholder={placeHolder}
+      name={name}
+      id={id}
+      min={min}
     />
   );
 };

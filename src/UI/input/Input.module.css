@@ -20,6 +20,9 @@
   border: 2px solid #1a7012;
   font-size: 16px;
   font-size: 26px;
+  backdrop-filter: blur(4.5px);
+  background-color: rgba(0, 0, 0, 0.344);
+  color: #fff;
 }
 
 *:focus {
