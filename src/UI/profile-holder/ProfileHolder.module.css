@@ -1,0 +1,35 @@
+.logoName {
+  padding: 15px;
+  text-align: center;
+}
+
+.logoName svg {
+  max-width: 200px;
+  width: 100%;
+}
+
+.logoName h1 {
+  position: relative;
+  color: #fff;
+}
+
+.logoName h1 span:first-child {
+  color: #006df0;
+}
+
+.logoName h1 span:last-child {
+  color: #ee583b;
+}
+
+.logoName h1::before {
+  content: "";
+  background-image: url("../../assets/img/barber-pole.png");
+  position: absolute;
+  max-width: 70px;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 70px;
+  left: -60px;
+  top: -15px;
+}

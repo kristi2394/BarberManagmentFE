@@ -8,6 +8,8 @@ import { AuthApi } from "../../libs/ApiServices/AuthApi";
 import { ReactComponent as BarberShopLogo } from "../../assets/Barber.svg";
 
 import styles from "./LogIn.module.css";
+import SideMenu from "../../layout/side-menu/SideMenu";
+import ProfileHolder from "../../UI/profile-holder/ProfileHolder";
 
 const Login = () => {
   const [userName, setUserName] = useState<{
@@ -40,27 +42,18 @@ const Login = () => {
   };
   return (
     <div className={styles.loginContainer}>
-      <div className={styles.userHolder}>
-        <div className={styles.logoAndUsers}>
-          <div className={styles.logoName}>
-            <BarberShopLogo />
-            <h1>
-              <span>Title</span> Of <span>Bussiness</span>
-            </h1>
-          </div>
-          <ul>
-            {listUsers.map((user: any) => (
-              <UsersList
-                buttonVal={buttonVal}
-                key={user.id}
-                user={user.username}
-                focusHandler={focusHandler}
-                rols={user.rols}
-              />
-            ))}
-          </ul>
-        </div>
-      </div>
+      <SideMenu>
+        <ProfileHolder />
+        {listUsers.map((user: any) => (
+          <UsersList
+            buttonVal={buttonVal}
+            key={user.id}
+            user={user.username}
+            focusHandler={focusHandler}
+            rols={user.rols}
+          />
+        ))}
+      </SideMenu>
       <div className={styles.loginHolder}>
         <LoginUser
           userName={userName.valueButton}

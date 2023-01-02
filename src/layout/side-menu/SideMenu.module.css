@@ -1,0 +1,26 @@
+.userHolder {
+  height: 100vh;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  border-right: 3px solid #27861e;
+  max-width: 30%;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 2px 27px -7px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 1px 2px 27px -7px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 1px 2px 27px -7px rgba(0, 0, 0, 1);
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.logoAndUsers {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}

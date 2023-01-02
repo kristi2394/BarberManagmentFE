@@ -18,7 +18,7 @@ const useGlobalContext = () => {
   return contextData;
 };
 
-export const GlobalContextProvider = ({ children }: any) => {
+export const GlobalContextProvider = ({ children }: {children: React.ReactNode}) => {
   const useLogInContext = LogInContext();
   return (
     <GlobalContextHook.Provider
