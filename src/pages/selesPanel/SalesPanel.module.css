@@ -1,0 +1,9 @@
+.salesPanelControl {
+  display: flex;
+  min-height: 100%;
+}
+
+.salesMenu {
+  display: flex;
+  gap: 3;
+}

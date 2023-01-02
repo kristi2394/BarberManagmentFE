@@ -9,7 +9,9 @@ import { AuthApi } from "../../libs/ApiServices/AuthApi";
 import { useMutation, useQuery } from "react-query";
 import { roles } from "../../types/rols";
 import useGlobalContext from "../../context/useGlobalContext";
-import LogInServices, { logInStore } from "../../libs/LogInServices/LogInServices";
+import LogInServices, {
+  logInStore,
+} from "../../libs/LogInServices/LogInServices";
 
 const LoginUser = ({
   userName,
@@ -31,7 +33,7 @@ const LoginUser = ({
       onSuccess: (response) => {
         console.log("fasdafdsf sdfasdfasdfsfdsfdsfsdfsfdasfdsf");
         console.log(response);
-        
+
         LogIn(response.token, response.id, response.rols);
       },
     }

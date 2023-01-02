@@ -26,7 +26,7 @@ const AutoLoginComponent = () => {
   const onPageInitOpen = () => {
     const logInData = logInStore().getLoginData();
     if (logInData) {
-      if (logInData.roles == roles.barbers) rout("/HomePanel");
+      if (logInData.roles == roles.barbers) rout("/SalesPanel");
     }
 
     if (!logInData) {
@@ -40,7 +40,7 @@ const AutoLoginComponent = () => {
   const onLoginAction = () => {
     console.log(logInService.isLoggedIn);
     if (logInService.isLoggedIn) {
-      if (logInService.getLoginData?.roles == roles.barbers) rout("/HomePanel");
+      if (logInService.getLoginData?.roles == roles.barbers) rout("/SalesPanel");
     }
     if (!logInService.isLoggedIn) {
       rout("/");
