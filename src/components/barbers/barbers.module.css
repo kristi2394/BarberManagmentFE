@@ -1,0 +1,65 @@
+.barberContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+
+.servicesContent {
+  max-width: 80%;
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+}
+
+.barberServicesHolder {
+  background: rgba(0, 0, 0, 0.282);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 36px;
+  padding: 20px 30px;
+  width: 100%;
+}
+.barberServicesHolder label {
+  display: block;
+  width: 100%;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
+}
+.isChecked::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  max-width: 50px;
+  background: url("../../assets/img/checked.png"), center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 50px;
+  left: -60px;
+  top: 0px;
+}
+.inputCheckServices {
+  display: none;
+}
+
+.isChecked {
+  background: #1a7012;
+  position: relative;
+  animation-name: stretchAnimation;
+  animation-duration: 0.5s;
+}
+
+@keyframes stretchAnimation {
+  from {
+    width: 20%;
+    background-color: #22db83;
+  }
+  to {
+    width: 100%;
+    background-color: #1a7012;
+  }
+}

@@ -5,8 +5,6 @@ import LoginUser from "../../components/loginUser/LoginUser";
 import UsersList from "../../components/usersList/UsersList";
 import { AuthApi } from "../../libs/ApiServices/AuthApi";
 
-import { ReactComponent as BarberShopLogo } from "../../assets/Barber.svg";
-
 import styles from "./LogIn.module.css";
 import SideMenu from "../../layout/side-menu/SideMenu";
 import ProfileHolder from "../../UI/profile-holder/ProfileHolder";
