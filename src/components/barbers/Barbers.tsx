@@ -1,67 +1,70 @@
-import { useState } from "react";
+
+import { useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
+
 import { PurchesListApi } from "../../libs/ApiServices/PurchesListApi";
 import { PurcheseTypes } from "../../types/purcheseTypes";
 import { serviceType } from "../../types/serviceTypes";
+
 import Button, { ButtonType } from "../../UI/button/Button";
 import { Input, InputType } from "../../UI/input/Input";
+
 import styles from "./Barbers.module.css";
 
-const dummy: serviceType[] = [
-  {
-    id: "1",
-    name: "inp1",
-    price: 0,
-  },
-  {
-    id: "2",
-    name: "inp2",
-    price: 0,
-  },
-  {
-    id: "3",
-    name: "inp3",
-    price: 0,
-  },
-];
-
 const Barbers = () => {
-  const [serviceList, setServiceList] = useState<string[]>([]);
-  const { data: listServices } = useQuery(
-    "UsersList",
+  const [serviceId, setServiceId] = useState<string[]>([]);
+
+  const { data: listServices }: { data: serviceType[] | undefined } = useQuery(
+    "servicesList",
     PurchesListApi().getServicesList
   );
 
-  console.log(listServices, "lista");
+  const [checkedState, setCheckedState] = useState<boolean[]>(
+    new Array(listServices?.length).fill(false)
+  );
 
   const { mutate: mutateBarbers, data: tiolale } = useMutation(
-    "list",
+    "mutateServices",
     PurchesListApi().postPurchases,
     {
       onSuccess: (response: any) => {
-        console.log(response, tiolale, "sss");
+        console.log(response, tiolale);
+
       },
     }
   );
 
-  const addService = (add: boolean, value?: string) => {
+  const addService = (add: boolean, value?: string, indexInp?: number) => {
+    const updatedCheckedState = checkedState.map(
+      (singleInp: boolean, index: number) =>
+        index === indexInp ? !singleInp : singleInp
+    );
+
+    setCheckedState(updatedCheckedState);
     if (value) {
-      setServiceList((n: Array<string>) => {
+      setServiceId((prev: Array<string>) => {
         if (add) {
-          return [...n, value];
+          return [...prev, value];
         }
-        return n.filter((s) => s != value);
+        return prev.filter((newData) => newData != value);
+
       });
     }
   };
 
   const postServicesPurchese = () => {
-    const postBody: PurcheseTypes = {
-      serviceEntities: serviceList.map((n) => {
-        return { id: n };
+    const postServiceBarber: PurcheseTypes = {
+      serviceEntities: serviceId.map((idServiceBarber) => {
+        return { id: idServiceBarber };
       }),
     };
-    mutateBarbers(postBody);
+    const updatedCheckedStateOnPurchase = checkedState.map(
+      (singleInp: boolean) => (singleInp = false)
+    );
+
+    setCheckedState(updatedCheckedStateOnPurchase);
+    mutateBarbers(postServiceBarber);
+
   };
 
   if (!listServices) {
@@ -70,18 +73,32 @@ const Barbers = () => {
 
   return (
     <div className={styles.barberContainer}>
-      {listServices.map((listService: any) => (
-        <>
-          <Input
-            type={InputType.checkbox}
-            name={listService.name}
-            id={listService.id}
-            onChange={(e) => addService(e?.target.checked, listService?.id)}
-            value={listService.id}
-          />
-          <label htmlFor={listService.id}>{listService.name}</label>
-        </>
-      ))}
+      <div className={styles.servicesContent}>
+        {listServices.map((listService, index) => (
+          <div
+            key={listService.id}
+            className={`${styles.barberServicesHolder}
+              ${checkedState[index] ? styles.isChecked : ""} `}
+          >
+            <Input
+              type={InputType.checkbox}
+              name={listService.name}
+              id={listService.id}
+              onChange={(e) =>
+                addService(
+                  (e?.target as HTMLInputElement).checked,
+                  listService?.id,
+                  index
+                )
+              }
+              customClass={styles.inputCheckServices}
+              value={listService.id}
+            />
+            <label htmlFor={listService.id}>{listService.name}</label>
+          </div>
+        ))}
+      </div>
+
       <Button type={ButtonType.button} onClick={postServicesPurchese}>
         Shite
       </Button>

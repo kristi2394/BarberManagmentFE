@@ -8,6 +8,11 @@ const AutoLoginComponent = () => {
   const rout = useNavigate();
   const preventInit = useRef(true);
 
+  window.history.pushState(null, window.location.href);
+  window.onpopstate = function (event) {
+    history.go(1);
+  };
+
   useEffect(() => {
     logInService.AutoLogin();
     onPageInitOpen();
