@@ -1,3 +1,4 @@
+
 import { useRef, useState } from "react";
 import { useMutation, useQuery } from "react-query";
 
@@ -28,6 +29,7 @@ const Barbers = () => {
     {
       onSuccess: (response: any) => {
         console.log(response, tiolale);
+
       },
     }
   );
@@ -45,6 +47,7 @@ const Barbers = () => {
           return [...prev, value];
         }
         return prev.filter((newData) => newData != value);
+
       });
     }
   };
@@ -61,6 +64,7 @@ const Barbers = () => {
 
     setCheckedState(updatedCheckedStateOnPurchase);
     mutateBarbers(postServiceBarber);
+
   };
 
   if (!listServices) {
@@ -94,6 +98,7 @@ const Barbers = () => {
           </div>
         ))}
       </div>
+
       <Button type={ButtonType.button} onClick={postServicesPurchese}>
         Shite
       </Button>
